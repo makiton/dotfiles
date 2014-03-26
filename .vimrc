@@ -369,6 +369,7 @@ map > :tabn<CR>
 set tabstop=2
 set shiftwidth=2
 set expandtab
+set number
 nnoremap <C-L>  :e<CR>
 
 if filereadable(expand('~/rtags'))
