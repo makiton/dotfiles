@@ -3,3 +3,5 @@
 	email = makiton@gmail.com
 [alias]
 	st = status
+[push]
+	default = simple
