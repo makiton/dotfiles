@@ -5,3 +5,5 @@
 	st = status
 [push]
 	default = simple
+[core]
+	excludesfile = /Users/makiton/.gitignore
