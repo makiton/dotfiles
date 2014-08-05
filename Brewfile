@@ -8,6 +8,7 @@ install vim
 install git
 install tmux
 install brew-cask
+install coreutils
 
 cask install vagrant
 cask install virtualbox
