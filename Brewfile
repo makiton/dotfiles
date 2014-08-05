@@ -9,6 +9,7 @@ install git
 install tmux
 install brew-cask
 install coreutils
+install gibo
 
 cask install vagrant
 cask install virtualbox
