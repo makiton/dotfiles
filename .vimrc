@@ -45,7 +45,8 @@ function! BundleLoadDepends(bundle_names) "{{{
 endfunction"}}}
 "}}}
 "
-"
+NeoBundle 'yuratomo/w3m.vim'
+
 " コマンドを伴うやつの遅延読み込み
 function! BundleWithCmd(bundle_names, cmd) "{{{
   call BundleLoadDepends(a:bundle_names)
@@ -315,13 +316,13 @@ aug END
 " Unite-rails.vim
 "------------------------------------
 "{{{
-nnoremap <C-H><C-H><C-H>  :<C-U>Unite rails/view<CR>
-nnoremap <C-H><C-H>       :<C-U>Unite rails/model<CR>
-nnoremap <C-H>            :<C-U>Unite rails/controller<CR>
+nnoremap [unite]rv  :<C-U>Unite rails/view<CR>
+nnoremap [unite]rm  :<C-U>Unite rails/model<CR>
+nnoremap [unite]rc  :<C-U>Unite rails/controller<CR>
 
-nnoremap <C-H>c           :<C-U>Unite rails/config<CR>
-nnoremap <C-H>s           :<C-U>Unite rails/spec<CR>
-nnoremap <C-H>m           :<C-U>Unite rails/db -input=migrate<CR>
+nnoremap [unite]rg  :<C-U>Unite rails/config<CR>
+nnoremap [unite]rs  :<C-U>Unite rails/spec<CR>
+nnoremap [unite]rm  :<C-U>Unite rails/db -input=migrate<CR>
 nnoremap <C-H>l           :<C-U>Unite rails/lib<CR>
 nnoremap <expr><C-H>g     ':e '.b:rails_root.'/Gemfile<CR>'
 nnoremap <expr><C-H>r     ':e '.b:rails_root.'/config/routes.rb<CR>'
@@ -346,6 +347,15 @@ aug MyAutoCmd
   au FileType ruby,eruby,ruby.rspec nnoremap <silent><buffer>K  :<C-U>Unite -no-start-insert ref/refe -input=<C-R><C-W><CR>
 aug END
 "}}}
+
+"------------------------------------
+" Unite
+"------------------------------------
+" {{{
+nnoremap [unite]  <Nop>
+nmap <Space>u [unite]
+nnoremap <silent> [unite]b :<C-u>
+" }}}
 
 "------------------------------------
 " Unite-reek, Unite-rails_best_practices
