@@ -3,6 +3,7 @@
 	email = makiton@gmail.com
 [alias]
 	st = status
+	gl = log --oneline --decorate --graph
 [push]
 	default = simple
 [core]
