@@ -45,8 +45,6 @@ function! BundleLoadDepends(bundle_names) "{{{
 endfunction"}}}
 "}}}
 "
-NeoBundle 'yuratomo/w3m.vim'
-
 " コマンドを伴うやつの遅延読み込み
 function! BundleWithCmd(bundle_names, cmd) "{{{
   call BundleLoadDepends(a:bundle_names)
