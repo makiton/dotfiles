@@ -1,2 +1,5 @@
 alias ll="ls -al"
-export AUTOSSH_POLL=30
+
+fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
+autoload -U compinit
+compinit -u
