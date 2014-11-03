@@ -18,6 +18,7 @@ cask install skype
 #cask install pokerstars
 cask install appcleaner
 cask install flash-player
+cask install xquartz
 
 tap sanemat/font
 install ricty
