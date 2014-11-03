@@ -25,3 +25,5 @@ endif
 so ~/.vim/autocommands.vim
 so ~/.vim/formats.vim
 so ~/.vim/keymaps.vim
+
+set clipboard+=unnamed
