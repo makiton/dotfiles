@@ -15,7 +15,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 runtime! plugins/*.vim
 
 call neobundle#end()
-filetype plugin indent off
+filetype plugin indent on
 NeoBundleCheck
 
 if !has('vim_starting')
