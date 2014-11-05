@@ -1,5 +1,5 @@
 nnoremap T :tabnew<CR>
-nnoremap <silent> N gT
-nnoremap <silent> n gt
+nnoremap <silent> H gT
+nnoremap <silent> L gt
 
 nnoremap <C-L>  :e<CR>
