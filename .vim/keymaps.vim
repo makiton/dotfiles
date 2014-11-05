@@ -1,5 +1,5 @@
-map T :tabnew<CR>
-map < :tabN<CR>
-map > :tabn<CR>
+nnoremap T :tabnew<CR>
+nnoremap <silent> N gT
+nnoremap <silent> n gt
 
-noremap <C-L>  :e<CR>
+nnoremap <C-L>  :e<CR>
