@@ -8,4 +8,4 @@
 [push]
 	default = current
 [core]
-	excludesfile = /Users/makiton/.gitignore
+	excludesfile = ~/.gitignore
