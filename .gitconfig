@@ -6,6 +6,6 @@
 	gl = log --oneline --decorate --graph
 	delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
 [push]
-	default = simple
+	default = current
 [core]
 	excludesfile = /Users/makiton/.gitignore
