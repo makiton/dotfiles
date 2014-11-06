@@ -4,6 +4,7 @@
 [alias]
 	st = status
 	gl = log --oneline --decorate --graph
+	delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
 [push]
 	default = simple
 [core]
