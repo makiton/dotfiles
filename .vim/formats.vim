@@ -5,3 +5,5 @@ set number
 set autoindent
 set smartindent
 syntax enable
+
+set previewheight=30
