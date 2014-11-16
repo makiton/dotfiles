@@ -1,4 +1,3 @@
-nunmap T
 nnoremap <silent> T :tabnew<CR>
 nnoremap <silent> H gT
 nnoremap <silent> L gt
