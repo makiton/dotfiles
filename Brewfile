@@ -4,6 +4,7 @@ upgrade
 install autoconf automake pkg-config
 install zsh
 install vim --with-lua
+install ctags
 install git
 install tmux
 install brew-cask
