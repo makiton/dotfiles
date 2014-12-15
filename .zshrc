@@ -1,6 +1,8 @@
 alias ll="ls -al"
 alias be="bundle exec"
 
+export EDITOR=vim
+
 fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 autoload -U compinit
 compinit -u
