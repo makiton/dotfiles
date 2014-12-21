@@ -4,6 +4,7 @@ upgrade
 install autoconf automake pkg-config
 install zsh
 install vim --with-lua
+install macvim --override-system-vim --with-lua
 install ctags
 install git
 install tmux
