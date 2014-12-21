@@ -11,6 +11,8 @@ install tmux
 install brew-cask
 install coreutils
 install gibo
+install rbenv
+install ruby-build
 
 tap phinze/homebrew-cask
 cask install vagrant
