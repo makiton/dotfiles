@@ -22,8 +22,8 @@ if !has('vim_starting')
   call neobundle#call_hook('on_source')
 endif
 
-so ~/.vim/autocommands.vim
-so ~/.vim/formats.vim
-so ~/.vim/keymaps.vim
+source ~/.vim/displays.vim
+source ~/.vim/autocommands.vim
+source ~/.vim/keymaps.vim
 
 set clipboard+=unnamed
