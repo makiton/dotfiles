@@ -4,3 +4,5 @@ nnoremap <silent> L gt
 let mapleader = ';'
 
 nnoremap <C-L>  :e<CR>
+noremap! ¥ \
+noremap! \ ¥
