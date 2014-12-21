@@ -15,6 +15,7 @@ install gibo
 tap phinze/homebrew-cask
 cask install vagrant
 cask install virtualbox
+cask install google-chrome
 cask install google-japanese-ime
 cask install google-drive
 cask install skype
