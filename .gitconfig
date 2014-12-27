@@ -9,3 +9,5 @@
 	default = current
 [core]
 	excludesfile = ~/.gitignore
+[ghq]
+	root = ~/workspace
