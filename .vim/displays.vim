@@ -1,4 +1,4 @@
-colorscheme desert
+colorscheme solarized
 
 set tabstop=2
 set shiftwidth=2
