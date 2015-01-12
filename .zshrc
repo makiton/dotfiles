@@ -2,6 +2,9 @@ bindkey -e
 alias ll="ls -al"
 alias be="bundle exec"
 
+setopt AUTO_CD
+cdpath=(.. ~ ~/workspace)
+
 export EDITOR=vim
 
 fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
