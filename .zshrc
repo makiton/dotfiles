@@ -1,3 +1,4 @@
+bindkey -e
 alias ll="ls -al"
 alias be="bundle exec"
 
