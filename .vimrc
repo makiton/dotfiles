@@ -13,6 +13,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 runtime! plugins/*.vim
+runtime! _colors/*.vim
 
 call neobundle#end()
 filetype plugin indent on
