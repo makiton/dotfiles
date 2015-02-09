@@ -11,6 +11,13 @@ fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 autoload -U compinit
 compinit -u
 
+# histories
+export HISTFILE=~/.zsh_history
+export HISTSIZE=1000
+export SAVEHIST=100000
+setopt hist_ignore_dups
+setopt EXTENDED_HISTORY
+
 autoload -Uz vcs_info
 setopt prompt_subst
 zstyle ':vcs_info:*' formats '%F{green}%b%f'
@@ -19,7 +26,7 @@ precmd() { vcs_info }
 PROMPT='${vcs_info_msg_0_}:%~/%% '
 
 export GOPATH=$HOME
-export PATH=$PATH:$GOPATH/bin
+export PATH=./bin:$PATH:$GOPATH/bin
 
 function peco-src () {
   local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
