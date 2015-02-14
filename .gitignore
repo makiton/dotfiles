@@ -62,4 +62,4 @@ config/secrets.yml
 *.bowerrc
 bower.json
 
-
+/bin
