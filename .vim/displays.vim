@@ -10,3 +10,5 @@ set smartindent
 syntax enable
 
 set previewheight=30
+
+let g:netrw_list_hide= '.*\.swp$,\~$,\.orig$'
