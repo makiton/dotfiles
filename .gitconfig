@@ -5,6 +5,8 @@
 	st = status
 	gl = log --oneline --decorate --graph
 	delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
+  follow-upstream = pull --rebase --ff-only upstream
+  merge-upstream = pull --no-ff upstream
 [push]
 	default = current
 [core]
