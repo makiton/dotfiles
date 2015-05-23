@@ -15,8 +15,12 @@ compinit -u
 export HISTFILE=~/.zsh_history
 export HISTSIZE=1000
 export SAVEHIST=100000
+
 setopt hist_ignore_dups
 setopt EXTENDED_HISTORY
+
+export LC_ALL=ja_JP.UTF-8
+export LANG=ja_JP.UTF-8
 
 autoload -Uz vcs_info
 setopt prompt_subst
