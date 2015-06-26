@@ -1,5 +1,8 @@
-set background=dark
+let g:netrw_list_hide= '.*\.swp$,\~$,\.orig$'
+let g:solarized_termcolors=256
+
 colorscheme solarized
+set background=dark
 
 set tabstop=2
 set shiftwidth=2
@@ -11,4 +14,3 @@ syntax enable
 
 set previewheight=30
 
-let g:netrw_list_hide= '.*\.swp$,\~$,\.orig$'
