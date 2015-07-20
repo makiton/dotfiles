@@ -29,9 +29,6 @@ zstyle ':vcs_info:*' actionformats '%F{green}%b%f(%F{red}%a%f)'
 precmd() { vcs_info }    
 PROMPT='${vcs_info_msg_0_}:%~/%% '
 
-export GOPATH=$HOME
-export PATH=./bin:$PATH:$GOPATH/bin
-
 function peco-src () {
   local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
   if [ -n "$selected_dir" ]; then
@@ -48,3 +45,6 @@ eval "$(rbenv init -)"
 
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
+
+export GOPATH=$HOME
+export PATH=./bin:$PATH:$GOPATH/bin
