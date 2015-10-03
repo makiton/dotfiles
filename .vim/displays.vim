@@ -10,6 +10,7 @@ set expandtab
 set number
 set autoindent
 set smartindent
+set hlsearch
 syntax enable
 
 set previewheight=30
