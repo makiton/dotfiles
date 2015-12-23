@@ -48,3 +48,5 @@ eval "$(pyenv init -)"
 
 export GOPATH=$HOME
 export PATH=./bin:$PATH:$GOPATH/bin
+
+eval "$(direnv hook zsh)"
