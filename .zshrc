@@ -40,7 +40,7 @@ function peco-src () {
 zle -N peco-src
 bindkey '^]' peco-src
 
-export PATH=./bin:$PATH
+export PATH=./bin:./node_modules/.bin:$PATH
 eval "$(rbenv init -)"
 
 export PATH="$HOME/.pyenv/bin:$PATH"
