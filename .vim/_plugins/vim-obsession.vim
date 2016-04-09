@@ -1,1 +1,1 @@
-NeoBundle 'tpope/vim-obsession'
+call dein#add('tpope/vim-obsession')

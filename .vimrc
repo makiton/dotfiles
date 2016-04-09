@@ -9,18 +9,28 @@ if has('vim_starting')
   let g:neobundle_default_git_protocol='https'
 endif
 
-call neobundle#begin(expand('~/.vim/bundle/'))
-NeoBundleFetch 'Shougo/neobundle.vim'
 
+
+if &compatible
+  set nocompatible
+endif
+set runtimepath^=/Users/makiton/.vim/repos/github.com/Shougo/dein.vim
+call dein#begin(expand('/Users/makiton/.vim'))
+call dein#add('Shougo/dein.vim')
+
+"  " Add or remove your plugins here:
+"  call dein#add('Shougo/neosnippet.vim')
+"  call dein#add('Shougo/neosnippet-snippets')
+"
+"  " You can specify revision/branch/tag.
+"  call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+"
 runtime! _plugins/*.vim
 runtime! _colors/*.vim
-
-call neobundle#end()
+call dein#end()
 filetype plugin indent on
-NeoBundleCheck
-
-if !has('vim_starting')
-  call neobundle#call_hook('on_source')
+if dein#check_install()
+  call dein#install()
 endif
 
 source ~/.vim/displays.vim

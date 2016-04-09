@@ -1,1 +1,1 @@
-NeoBundle 'jpo/vim-railscasts-theme'
+call dein#add('jpo/vim-railscasts-theme')

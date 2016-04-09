@@ -1,2 +1,2 @@
-NeoBundle 'altercation/vim-colors-solarized'
+call dein#add('altercation/vim-colors-solarized')
 set background=dark

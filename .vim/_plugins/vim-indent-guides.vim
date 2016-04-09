@@ -1,1 +1,1 @@
-NeoBundle 'nathanaelkane/vim-indent-guides'
+call dein#add('nathanaelkane/vim-indent-guides')

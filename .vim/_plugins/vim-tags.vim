@@ -1,1 +1,1 @@
-NeoBundle 'szw/vim-tags'
+call dein#add('szw/vim-tags')

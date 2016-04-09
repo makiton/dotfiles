@@ -1,1 +1,1 @@
-NeoBundle 'Lokaltog/vim-easymotion'
+call dein#add('Lokaltog/vim-easymotion')

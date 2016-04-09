@@ -1,1 +1,1 @@
-NeoBundle 'tpope/vim-rails'
+call dein#add('tpope/vim-rails')

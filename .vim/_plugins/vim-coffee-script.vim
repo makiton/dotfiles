@@ -1,1 +1,1 @@
-NeoBundle 'kchmck/vim-coffee-script'
+call dein#add('kchmck/vim-coffee-script')

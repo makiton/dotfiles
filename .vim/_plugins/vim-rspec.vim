@@ -1,2 +1,5 @@
-NeoBundleLazy 'skwp/vim-rspec', {
-      \ 'autoload': { 'filetypes': ['ruby', 'eruby', 'haml'] } }
+call dein#add('skwp/vim-rspec',
+      \{
+      \ 'autoload': { 'filetypes': ['ruby', 'eruby', 'haml'] }
+      \}
+      \)

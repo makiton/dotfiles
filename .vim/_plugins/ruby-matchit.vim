@@ -1,3 +1,3 @@
-NeoBundleLazy 'ruby-matchit', {
-    \ 'autoload' : { 'filetypes': ['ruby', 'eruby', 'haml'] } }
+call dein#add('ruby-matchit')
+    "\ 'autoload' : { 'filetypes': ['ruby', 'eruby', 'haml'] } }
 

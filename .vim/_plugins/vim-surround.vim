@@ -1,4 +1,4 @@
-NeoBundle 'tpope/vim-surround'
+call dein#add('tpope/vim-surround')
 
 nmap ds  <Plug>Dsurround
 nmap cs  <Plug>Csurround

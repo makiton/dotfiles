@@ -1,2 +1,5 @@
-NeoBundleLazy 'slim-template/vim-slim', {
-  \ 'autoload' : { 'filetypes': ['slim'] } }
+call dein#add('slim-template/vim-slim',
+      \{
+      \ 'autoload' : { 'filetypes': ['slim'] }
+      \}
+      \)
