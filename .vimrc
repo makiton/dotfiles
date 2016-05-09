@@ -1,8 +1,8 @@
 if &compatible
   set nocompatible
 endif
-set runtimepath^=/Users/makiton/.vim/repos/github.com/Shougo/dein.vim
-call dein#begin(expand('/Users/makiton/.vim'))
+set runtimepath^=~/.vim/repos/github.com/Shougo/dein.vim
+call dein#begin(expand('~/.vim'))
 call dein#add('Shougo/dein.vim')
 
 runtime! _plugins/*.vim
