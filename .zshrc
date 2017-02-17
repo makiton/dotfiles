@@ -49,4 +49,6 @@ eval "$(pyenv init -)"
 export GOPATH=$HOME
 export PATH=./bin:$PATH:$GOPATH/bin
 
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+
 eval "$(direnv hook zsh)"

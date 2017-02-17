@@ -15,6 +15,7 @@ install rbenv
 install ruby-build
 
 tap phinze/homebrew-cask
+cask install java
 cask install vagrant
 cask install virtualbox
 cask install google-chrome
