@@ -1,3 +1,3 @@
-call dein#add('ruby-matchit')
+call dein#add('vim-scripts/ruby-matchit')
     "\ 'autoload' : { 'filetypes': ['ruby', 'eruby', 'haml'] } }
 
