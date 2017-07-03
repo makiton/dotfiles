@@ -13,6 +13,7 @@ Session.vim
 .vim/repos/
 .vim/rollbacks/
 .vim/temp/
+.vim/.cache/
 =======
 
 ### https://raw.github.com/github/gitignore/298588469ac0cb08a00eebf7b00efb5ab726daca/Global/Tags.gitignore
