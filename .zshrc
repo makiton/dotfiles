@@ -26,7 +26,7 @@ autoload -Uz vcs_info
 setopt prompt_subst
 zstyle ':vcs_info:*' formats '%F{green}%b%f'
 zstyle ':vcs_info:*' actionformats '%F{green}%b%f(%F{red}%a%f)'
-precmd() { vcs_info }    
+precmd() { vcs_info }
 PROMPT='${vcs_info_msg_0_}:%~/%% '
 
 function peco-src () {
@@ -52,3 +52,10 @@ export PATH=./bin:$PATH:$GOPATH/bin
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
 eval "$(direnv hook zsh)"
+eval $(docker-machine env default)
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/mfk-0010.Suzuki/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/mfk-0010.Suzuki/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/mfk-0010.Suzuki/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/mfk-0010.Suzuki/google-cloud-sdk/completion.zsh.inc'; fi
