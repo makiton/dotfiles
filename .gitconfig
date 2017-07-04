@@ -1,6 +1,8 @@
 [user]
 	name = makiton
 	email = makiton@gmail.com
+[includeIf "gitdir:~/go/src/github.com/mfkessai/"]
+	path = .gitconfig-mfkessai
 [alias]
 	st = status
 	gl = log --oneline --decorate --graph
