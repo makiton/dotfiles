@@ -47,7 +47,7 @@ export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 
 export GOPATH=$HOME/go
-export PATH=./bin:$PATH:$GOPATH/bin
+export PATH=./bin:$GOPATH/bin:$PATH
 
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
