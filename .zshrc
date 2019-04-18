@@ -55,7 +55,8 @@ eval "$(direnv hook zsh)"
 eval $(docker-machine env default)
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/mfk-0010.Suzuki/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/mfk-0010.Suzuki/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/makiton/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/makiton/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/mfk-0010.Suzuki/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/mfk-0010.Suzuki/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/Users/makiton/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/makiton/google-cloud-sdk/completion.zsh.inc'; fi
+export PYENV_ROOT="$HOME/.pyenv"
