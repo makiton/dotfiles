@@ -7,8 +7,9 @@
 	st = status
 	gl = log --oneline --decorate --graph
 	delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
-  follow-upstream = pull --rebase --ff-only upstream
-  merge-upstream = pull --no-ff upstream
+	follow-upstream = pull --rebase --ff-only upstream
+  follow = pull --rebase --ff-only origin
+	merge-upstream = pull --no-ff upstream
 	openpr = "!f() { hub browse -- `git log --merges --oneline --reverse --ancestry-path $1...master | grep 'Merge pull request #' | head -n 1 | cut -f5 -d' ' | sed -e 's%#%pull/%'`; }; f"
 [push]
 	default = current
