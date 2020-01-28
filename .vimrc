@@ -17,4 +17,5 @@ source ~/.vim/displays.vim
 source ~/.vim/autocommands.vim
 source ~/.vim/keymaps.vim
 
+set fileencodings=utf-8,cp932,sjis,iso-2022-jp,euc-jp
 set clipboard+=unnamed
