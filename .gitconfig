@@ -15,6 +15,7 @@
 	default = current
 [core]
 	excludesfile = ~/.gitignore
+	editor = vim
 [ghq]
 	root = ~/workspace
 [merge]
