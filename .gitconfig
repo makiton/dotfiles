@@ -3,6 +3,8 @@
 	email = makiton@gmail.com
 [includeIf "gitdir:~/go/src/github.com/mfkessai/"]
 	path = .gitconfig-mfkessai
+[includeIf "gitdir:~/workspace/bizforwardinc/"]
+	path = .gitconfig-bizforward
 [alias]
 	st = status
 	gl = log --oneline --decorate --graph
