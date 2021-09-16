@@ -61,3 +61,7 @@ if [ -f "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/makiton/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/makiton/google-cloud-sdk/completion.zsh.inc'; fi
 export PYENV_ROOT="$HOME/.pyenv"
+
+if type nodenv >/dev/null 2>&1; then
+  eval "$(nodenv init -)"
+fi
