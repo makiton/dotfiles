@@ -51,8 +51,10 @@ if type pyenv >/dev/null 2>&1; then
   export PYENV_ROOT="$HOME/.pyenv"
 fi
 
-if [ -e /usr/libexec/java_home ]; then
-  export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+res=0
+java_home=$(/usr/libexec/java_home -v 1.8 2>/dev/null) || res=$?
+if [ $res = 0 ]; then
+  export JAVA_HOME=${java_home}
 fi
 
 if type direnv >/dev/null 2>&1; then
