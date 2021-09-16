@@ -40,16 +40,27 @@ function peco-src () {
 zle -N peco-src
 bindkey '^]' peco-src
 
-export PATH=./bin:./vendor/bin:./node_modules/.bin:$PATH
-eval "$(rbenv init -)"
+if type rbenv >/dev/null 2>&1; then
+  export PATH=./bin:./vendor/bin:./node_modules/.bin:$PATH
+  eval "$(rbenv init -)"
+fi
 
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
+if type pyenv >/dev/null 2>&1; then
+  export PATH="$HOME/.pyenv/bin:$PATH"
+  eval "$(pyenv init -)"
+fi
 
-export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+if [ -e /usr/libexec/java_home ]; then
+  export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+fi
 
-eval "$(direnv hook zsh)"
-eval $(docker-machine env default)
+if type direnv >/dev/null 2>&1; then
+  eval "$(direnv hook zsh)"
+fi
+
+if type docker-machine >/dev/null 2>&1; then
+  eval $(docker-machine env default)
+fi
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc" ]; then source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"; fi
