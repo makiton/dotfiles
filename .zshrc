@@ -75,3 +75,13 @@ if [ -f '/Users/makiton/google-cloud-sdk/completion.zsh.inc' ]; then source '/Us
 if type nodenv >/dev/null 2>&1; then
   eval "$(nodenv init -)"
 fi
+
+# ssh-agent on Windows
+if [ -f '/mnt/c/Users/makit/wsl-ssh-agent/npiperelay.exe' ]; then
+  export SSH_AUTH_SOCK=$HOME/.ssh/agent.sock
+  ss -a | grep -q $SSH_AUTH_SOCK
+  if [ $? -ne 0 ]; then
+      rm -f $SSH_AUTH_SOCK
+      ( setsid socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"/mnt/c/Users/makit/wsl-ssh-agent/npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork & ) >/dev/null 2>&1
+  fi
+fi
