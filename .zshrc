@@ -7,7 +7,10 @@ cdpath=(.. ~ ~/workspace)
 
 export EDITOR=vim
 
-fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
+if type brew >/dev/null 2>&1; then
+  fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
+fi
+
 autoload -U compinit
 compinit -u
 
