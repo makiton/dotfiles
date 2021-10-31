@@ -29,10 +29,12 @@ autoload -Uz vcs_info
 setopt prompt_subst
 zstyle ':vcs_info:*' formats '%F{green}%b%f'
 zstyle ':vcs_info:*' actionformats '%F{green}%b%f(%F{red}%a%f)'
-precmd() { vcs_info }
+function precmd() {
+  vcs_info
+}
 PROMPT='${vcs_info_msg_0_}:%~/%% '
 
-function peco-src () {
+function peco-src() {
   local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
   if [ -n "$selected_dir" ]; then
     BUFFER="cd ${selected_dir}"
@@ -91,7 +93,7 @@ if [ -f '/mnt/c/Users/makit/wsl-ssh-agent/npiperelay.exe' ]; then
   export SSH_AUTH_SOCK=$HOME/.ssh/agent.sock
   ss -a | grep -q $SSH_AUTH_SOCK
   if [ $? -ne 0 ]; then
-      rm -f $SSH_AUTH_SOCK
-      ( setsid socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"/mnt/c/Users/makit/wsl-ssh-agent/npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork & ) >/dev/null 2>&1
+    rm -f $SSH_AUTH_SOCK
+    (setsid socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"/mnt/c/Users/makit/wsl-ssh-agent/npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork &) >/dev/null 2>&1
   fi
 fi
