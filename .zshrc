@@ -77,6 +77,8 @@ if [ -f "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/makiton/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/makiton/google-cloud-sdk/completion.zsh.inc'; fi
 
+if [ -f '/home/makiton/.nodenv/bin/nodenv' ]; then export PATH=~/.nodenv/bin:${PATH}; fi
+
 if type nodenv >/dev/null 2>&1; then
   eval "$(nodenv init -)"
 fi
