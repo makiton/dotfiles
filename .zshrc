@@ -83,6 +83,9 @@ if type nodenv >/dev/null 2>&1; then
   eval "$(nodenv init -)"
 fi
 
+if [ -e '/usr/local/go/bin' ]; then export PATH=$PATH:/usr/local/go/bin; fi
+if [ -e "$HOME/go/bin" ]; then export PATH=$PATH:$HOME/go/bin; fi
+
 # ssh-agent on Windows
 if [ -f '/mnt/c/Users/makit/wsl-ssh-agent/npiperelay.exe' ]; then
   export SSH_AUTH_SOCK=$HOME/.ssh/agent.sock
