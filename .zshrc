@@ -54,6 +54,8 @@ if type pyenv >/dev/null 2>&1; then
   export PYENV_ROOT="$HOME/.pyenv"
 fi
 
+if [ -e "$HOME/.local/bin" ]; then export PATH=$PATH:"$HOME/.local/bin"; fi
+
 res=0
 java_home=$(/usr/libexec/java_home -v 1.8 2>/dev/null) || res=$?
 if [ $res = 0 ]; then
