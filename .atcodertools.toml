@@ -1,0 +1,22 @@
+[codestyle]
+indent_type='space' # 'tab' or 'space'
+indent_width=4
+workspace_dir='~/github.com/makiton/atcoder/'
+template_file='~/github.com/makiton/atcoder/atocoder_tools_template.jinja'
+lang='python' # Check README.md for the supported languages.
+[postprocess]
+exec_on_each_problem_dir='clang-format -i ./*.cpp'
+exec_on_contest_dir='touch CMakeLists.txt'
+[compiler]
+compile_command='g++ main.cpp -o main -std=c++17'
+compile_only_when_diff_detected=true
+[tester]
+compile_before_testing=false
+compile_only_when_diff_detected=true
+[etc]
+download_without_login=false
+parallel_download=false
+save_no_session_cache=false
+skip_existing_problems=true
+in_example_format="in_{}.txt"
+out_example_format="out_{}.txt"
