@@ -97,4 +97,7 @@ if [ -f '/mnt/c/Users/makit/wsl-ssh-agent/npiperelay.exe' ]; then
     (setsid socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"/mnt/c/Users/makit/wsl-ssh-agent/npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork &) >/dev/null 2>&1
   fi
 fi
+
 if [ -e '/usr/local/opt/mysql-client/bin' ]; then export PATH="/usr/local/opt/mysql-client/bin:$PATH"; fi
+
+eval "$(anyenv init -)"
