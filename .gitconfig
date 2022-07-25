@@ -12,6 +12,7 @@
 	follow-upstream = pull --rebase --ff-only upstream
 	follow = pull --rebase --ff origin
 	merge-upstream = pull --no-ff upstream
+	merge-origin = pull --no-ff origin
 	openpr = "!f() { hub browse -- `git log --merges --oneline --reverse --ancestry-path $1...master | grep 'Merge pull request #' | head -n 1 | cut -f5 -d' ' | sed -e 's%#%pull/%'`; }; f"
 [push]
 	default = current
