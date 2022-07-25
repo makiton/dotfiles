@@ -34,3 +34,5 @@
 	insteadOf = https://github.com/
 [init]
 	defaultBranch = main
+[fetch]
+	prune = true
