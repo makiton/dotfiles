@@ -101,3 +101,8 @@ fi
 if [ -e '/usr/local/opt/mysql-client/bin' ]; then export PATH="/usr/local/opt/mysql-client/bin:$PATH"; fi
 
 eval "$(anyenv init - zsh)"
+
+if type keychain >/dev/null 2>&1; then
+  keychain -q --nogui $HOME/.ssh/id_ed25519
+  source $HOME/.keychain/$NAME-sh
+fi
