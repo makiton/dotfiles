@@ -106,5 +106,5 @@ fi
 
 if type keychain >/dev/null 2>&1; then
   keychain -q --nogui $HOME/.ssh/id_ed25519
-  source $HOME/.keychain/$NAME-sh
+  source $HOME/.keychain/$HOST-sh
 fi
