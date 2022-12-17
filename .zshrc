@@ -22,8 +22,8 @@ export SAVEHIST=100000
 setopt hist_ignore_dups
 setopt EXTENDED_HISTORY
 
-export LC_ALL=ja_JP.UTF-8
-export LANG=ja_JP.UTF-8
+# export LC_ALL=ja_JP.UTF-8
+# export LANG=ja_JP.UTF-8
 
 autoload -Uz vcs_info
 setopt prompt_subst
@@ -100,4 +100,4 @@ fi
 
 if [ -e '/usr/local/opt/mysql-client/bin' ]; then export PATH="/usr/local/opt/mysql-client/bin:$PATH"; fi
 
-eval "$(anyenv init -)"
+eval "$(anyenv init - zsh)"
