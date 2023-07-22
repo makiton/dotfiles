@@ -1,0 +1,38 @@
+[user]
+	name = makiton
+	email = makiton@gmail.com
+[includeIf "gitdir:~/go/src/github.com/mfkessai/"]
+	path = .gitconfig-mfkessai
+[includeIf "gitdir:~/github.com/bizforwardinc/"]
+	path = .gitconfig-bizforward
+[alias]
+	st = status
+	gl = log --oneline --decorate --graph
+	delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
+	follow-upstream = pull --rebase --ff-only upstream
+	follow = pull --rebase --ff origin
+	merge-upstream = pull --no-ff upstream
+	merge-origin = pull --no-ff origin
+	openpr = "!f() { hub browse -- `git log --merges --oneline --reverse --ancestry-path $1...master | grep 'Merge pull request #' | head -n 1 | cut -f5 -d' ' | sed -e 's%#%pull/%'`; }; f"
+[push]
+	default = current
+[core]
+	excludesfile = ~/.gitignore
+	editor = vim
+[ghq]
+	root = ~/workspace
+[merge]
+	tool = gvimdiff
+	conflictstyle = diff3
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[rebase]
+	autosquash = true
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[init]
+	defaultBranch = main
+[fetch]
+	prune = true
