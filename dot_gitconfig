@@ -5,6 +5,8 @@
 	path = .gitconfig-mfkessai
 [includeIf "gitdir:~/github.com/bizforwardinc/"]
 	path = .gitconfig-bizforward
+[includeIf "gitdir:~/github.com/moneyforward/"]
+	path = .gitconfig-moneyforward
 [alias]
 	st = status
 	gl = log --oneline --decorate --graph
