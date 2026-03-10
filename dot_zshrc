@@ -115,3 +115,5 @@ esac
 source /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 export PATH="/opt/homebrew/opt/mysql-client@8.0/bin:$PATH"
+
+if [ -e '/snap/bin' ]; then export PATH=/snap/bin:${PATH}; fi
