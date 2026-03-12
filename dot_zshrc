@@ -117,3 +117,8 @@ source /opt/homebrew/opt/asdf/libexec/asdf.sh
 export PATH="/opt/homebrew/opt/mysql-client@8.0/bin:$PATH"
 
 if [ -e '/snap/bin' ]; then export PATH=/snap/bin:${PATH}; fi
+
+# Auto-start tmux
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+    tmux attach-session -t default || tmux new-session -s default
+fi
