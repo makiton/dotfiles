@@ -3,7 +3,7 @@ bindkey -e
 export EDITOR=vim
 
 # Locale settings (Resilient)
-if locale -a | grep -q "ja_JP.utf8" 2>/dev/null; then
+if locale -a 2>/dev/null | grep -q "ja_JP.utf8"; then
   export LC_ALL=ja_JP.UTF-8
   export LANG=ja_JP.UTF-8
 else
