@@ -1,1 +1,16 @@
-{}
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh pr:*)",
+      "Bash(git fetch:*)",
+      "Bash(git push:*)",
+      "Bash(gh run:*)",
+      "Bash(grep -v \"^\\\\s*$\")",
+      "Bash(pnpm biome:*)",
+      "Bash(git stash:*)",
+      "Bash(git checkout:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
+    ]
+  }
+}
