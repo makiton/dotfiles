@@ -80,6 +80,10 @@ path=(
 
 # --- Tool Integrations ---
 
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
 # anyenv
 if [ -d "$HOME/.anyenv" ]; then
   export PATH="$HOME/.anyenv/bin:$PATH"
@@ -103,10 +107,6 @@ if command -v pyenv >/dev/null 2>&1; then
   export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init -)"
 fi
-
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 # direnv
 command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
