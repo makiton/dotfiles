@@ -1,4 +1,6 @@
 {
+  "autoMode": true,
+  "permissionMode": "acceptEdits",
   "statusLine": {
     "type": "command",
     "command": "bash \"$HOME/.claude/statusline-command.sh\""
