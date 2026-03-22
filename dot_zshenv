@@ -1,6 +1,3 @@
 PATH=/usr/local/bin:/opt/local/apache2/bin:/opt/local/bin:/opt/local/sbin:${PATH}
 typeset -U path
 EDITOR='vim'
-
-export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
-alias claude="claude --enable-auto-mode --permission-mode acceptEdits"

@@ -1,6 +1,9 @@
 {
   "autoMode": true,
-  "permissionMode": "acceptEdits",
+  "defaultMode": "acceptEdits",
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
   "statusLine": {
     "type": "command",
     "command": "bash \"$HOME/.claude/statusline-command.sh\""
