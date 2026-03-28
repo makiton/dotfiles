@@ -1,0 +1,11 @@
+---
+description: Commit completed work to git before finishing a task
+alwaysApply: true
+---
+
+# Commit when done
+
+When you complete a task (implementation, fix, or change requested by the user), **commit the changes** to git.
+
+- Stage the relevant files and create a commit with a clear message that describes what was done.
+- Do not leave the working tree with uncommitted changes after finishing a task, unless the user asks otherwise.

@@ -1,0 +1,21 @@
+---
+description: TypeScript and JavaScript conventions
+globs: "**/*.{ts,tsx,js,jsx}"
+alwaysApply: false
+---
+
+# TypeScript / JavaScript
+
+- Use `const` by default; `let` only when reassignment is needed.
+- Prefer explicit return types on exported functions.
+- Handle errors explicitly; avoid empty `catch` blocks.
+
+```typescript
+// Prefer
+try {
+  await fetchData();
+} catch (e) {
+  logger.error("Fetch failed", { error: e });
+  throw new DataFetchError("Unable to retrieve data", { cause: e });
+}
+```

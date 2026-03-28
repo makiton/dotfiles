@@ -1,0 +1,11 @@
+---
+description: General coding and collaboration conventions
+globs: "**/*"
+alwaysApply: false
+---
+
+# General conventions
+
+- Prefer small, focused changes; one logical change per commit.
+- Leave clear comments for non-obvious behavior; avoid commenting the obvious.
+- Use existing project patterns before introducing new ones.

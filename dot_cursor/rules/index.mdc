@@ -1,0 +1,14 @@
+---
+description: Project overview and default rules for this ruleset
+alwaysApply: true
+---
+
+# Remote rules – project overview
+
+This ruleset is intended to be used as **remote rules** (e.g. added via Cursor Settings → Rules → Add from GitHub).
+
+- Prefer clear, actionable instructions over long prose.
+- One concern per rule file; use `globs` for file-specific rules.
+- Keep each rule under ~50 lines when possible.
+
+Add or edit `.mdc` files in `.cursor/rules/` to extend this set.
