@@ -15,6 +15,7 @@ CYAN='\033[36m'
 GREEN='\033[32m'
 YELLOW='\033[33m'
 RED='\033[31m'
+MAGENTA='\033[35m'
 RESET='\033[0m'
 
 # Pick a color based on percentage
@@ -73,4 +74,33 @@ if [ -n "$SEVEN_D" ]; then
   RATE_STR="${RATE_STR} 7d:${SD_COLOR}${SD_BAR}${RESET}${SD_INT}%"
 fi
 
-echo -e "${CYAN}[$MODEL]${RESET} 📁 ${DIRNAME}${BRANCH} | ${CW_COLOR}${CW_BAR}${RESET} ${PCT}%${COST_STR}${RATE_STR}"
+# Line 1: main statusline
+LINE1="${CYAN}[$MODEL]${RESET} 📁 ${DIRNAME}${BRANCH} | ${CW_COLOR}${CW_BAR}${RESET} ${PCT}%${COST_STR}${RATE_STR}"
+
+# Line 2: skill/agent usage from PostToolUse hook log
+SESSION_ID=$(echo "$input" | jq -r '.session_id // empty')
+USAGE_STR=""
+if [ -n "$SESSION_ID" ]; then
+  LOGFILE="/tmp/claude-usage-${SESSION_ID}.jsonl"
+  if [ -f "$LOGFILE" ]; then
+    LAST_SKILL=""
+    LAST_AGENT=""
+    while IFS= read -r line; do
+      TYPE=$(echo "$line" | jq -r '.type // empty')
+      NAME=$(echo "$line" | jq -r '.name // empty')
+      case "$TYPE" in
+        skill) LAST_SKILL="$NAME" ;;
+        agent) LAST_AGENT="$NAME" ;;
+      esac
+    done < "$LOGFILE"
+    ITEMS=""
+    [ -n "$LAST_SKILL" ] && ITEMS="${CYAN}sk:${LAST_SKILL}${RESET}"
+    if [ -n "$LAST_AGENT" ]; then
+      [ -n "$ITEMS" ] && ITEMS="${ITEMS} | "
+      ITEMS="${ITEMS}${MAGENTA}ag:${LAST_AGENT}${RESET}"
+    fi
+    [ -n "$ITEMS" ] && USAGE_STR="\n${ITEMS}"
+  fi
+fi
+
+echo -e "${LINE1}${USAGE_STR}"
