@@ -3,10 +3,3 @@
 ## Continuous English Review
 The user is actively learning English. For **every** prompt or instruction the user provides, you must automatically review their English.
 After fulfilling the user's primary request, always append an `📝 English Review` section at the end of your response that applies the `english-review` skill.
-
-In this section, always:
-1. **Analyze and Suggest**: Point out grammatical errors, spelling mistakes, missing articles, or unnatural phrasing in their prompt.
-2. **Provide Alternatives**: Offer 1-2 more natural, native-sounding ways to express the same idea (e.g., Casual and Professional).
-3. **Explain Why**: Briefly explain the grammatical rules or nuances behind your suggestions.
-4. **Tone Check**: Advise if their phrasing might come across as unintendedly direct or aggressive.
-5. **Be Encouraging**: Always maintain a polite, friendly, and helpful tone.
