@@ -1,35 +1,12 @@
 #!/bin/bash
 input=$(cat)
 
-# Use python3 for JSON parsing — always available on WSL/Linux, no jq dependency needed
-_jq() {
-  echo "$input" | python3 -c "
-import sys, json
-try:
-    d = json.load(sys.stdin)
-    keys = '$1'.lstrip('.').split('.')
-    v = d
-    for k in keys:
-        v = v.get(k) if isinstance(v, dict) else None
-        if v is None:
-            break
-    print(v if v is not None else '$2')
-except Exception:
-    print('$2')
-" 2>/dev/null
-}
-
-MODEL=$(_jq '.model.display_name' 'Claude')
-COST=$(_jq '.cost.total_cost_usd' '0')
-TOKENS_IN=$(_jq '.context_window.total_input_tokens' '0')
-TOKENS_OUT=$(_jq '.context_window.total_output_tokens' '0')
-PCT=$(_jq '.context_window.used_percentage' '0')
-PCT=$(echo "$PCT" | cut -d. -f1)
-
-# Workspace dir — try JSON first, then fall back to $PWD
-DIR=$(_jq '.workspace.current_dir' '')
-[ -z "$DIR" ] && DIR=$(_jq '.cwd' '')
-[ -z "$DIR" ] && DIR="$PWD"
+MODEL=$(echo "$input" | jq -r '.model.display_name // "Claude"')
+DIR=$(echo "$input" | jq -r '.workspace.current_dir // .cwd // env.PWD')
+COST=$(echo "$input" | jq -r '.cost.total_cost_usd // 0')
+TOKENS_IN=$(echo "$input" | jq -r '.context_window.total_input_tokens // 0')
+TOKENS_OUT=$(echo "$input" | jq -r '.context_window.total_output_tokens // 0')
+PCT=$(echo "$input" | jq -r '.context_window.used_percentage // 0' | cut -d. -f1)
 
 if ! [[ "$PCT" =~ ^[0-9]+$ ]]; then
   PCT=0
@@ -62,21 +39,20 @@ fi
 
 DIRNAME=$(basename "$DIR")
 
-# Cost indicator (useful at work with API key billing)
 COST_STR=""
-HAS_COST=$(awk -v cost="$COST" 'BEGIN { if (cost+0 > 0) print 1; else print 0 }')
+HAS_COST=$(awk -v cost="$COST" 'BEGIN { if (cost > 0) print 1; else print 0 }')
 if [ "$HAS_COST" = "1" ]; then
   COST_FMT=$(printf '$%.4f' "$COST")
   COST_STR=" | 💰 ${YELLOW}${COST_FMT}${RESET}"
 fi
 
-# Token usage indicator (useful at home with model usage limits)
+# Token usage indicator — /usage style: full comma-formatted numbers
 TOKENS_STR=""
 HAS_TOKENS=$(awk -v t="$TOKENS_IN" 'BEGIN { if (t+0 > 0) print 1; else print 0 }')
 if [ "$HAS_TOKENS" = "1" ]; then
-  IN_K=$(awk -v t="$TOKENS_IN" 'BEGIN { printf "%.1fk", t/1000 }')
-  OUT_K=$(awk -v t="$TOKENS_OUT" 'BEGIN { printf "%.1fk", t/1000 }')
-  TOKENS_STR=" | 🔢 ${CYAN}${IN_K}↑${OUT_K}↓${RESET}"
+  IN_FMT=$(python3 -c "print(f'{int($TOKENS_IN):,}')")
+  OUT_FMT=$(python3 -c "print(f'{int($TOKENS_OUT):,}')")
+  TOKENS_STR=" | 📊 ${CYAN}In:${IN_FMT} Out:${OUT_FMT}${RESET}"
 fi
 
 echo -e "${CYAN}[$MODEL]${RESET} 📁 ${DIRNAME}${BRANCH} | ${BAR_COLOR}${BAR}${RESET} ${PCT}%${COST_STR}${TOKENS_STR}"
