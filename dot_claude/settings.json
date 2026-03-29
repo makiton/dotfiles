@@ -47,8 +47,5 @@
     "typescript-lsp@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": true
   },
-  "sandbox": {
-    "enabled": true
-  },
   "defaultMode": "auto"
 }
