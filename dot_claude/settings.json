@@ -17,10 +17,6 @@
       "Bash(git commit:*)"
     ]
   },
-  "statusLine": {
-    "type": "command",
-    "command": "bash \"$HOME/.claude/statusline-command.sh\""
-  },
   "hooks": {
     "PostToolUse": [
       {
@@ -43,8 +39,13 @@
       }
     ]
   },
+  "statusLine": {
+    "type": "command",
+    "command": "bash \"$HOME/.claude/statusline-command.sh\""
+  },
   "enabledPlugins": {
-    "typescript-lsp@claude-plugins-official": true
+    "typescript-lsp@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true
   },
   "sandbox": {
     "enabled": true
