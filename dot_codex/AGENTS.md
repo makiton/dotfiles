@@ -2,6 +2,12 @@
 
 These are user-level defaults intended to apply to all projects.
 
+## Session start (git)
+
+`~/.codex/hooks.json` runs `~/.claude/hooks/git-sync-main.sh` on SessionStart (`startup` and `resume`) so `origin` is fetched and `main`/`master` is fast-forwarded when you are on that branch.
+
+Hooks require `[features] codex_hooks = true` in `~/.codex/config.toml`. If you already use `config.toml`, merge that flag in instead of replacing the file.
+
 ## Default behavior
 
 - Keep changes small and focused; avoid unrelated refactors.

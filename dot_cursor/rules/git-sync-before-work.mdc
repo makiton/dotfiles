@@ -1,0 +1,12 @@
+---
+description: Fetch and fast-forward the default git branch when starting work in a repo
+alwaysApply: true
+---
+
+# Git sync before work
+
+When you begin substantive work in a git repository, run once from the repository root:
+
+`bash "$HOME/.claude/hooks/git-sync-main.sh"`
+
+The script reads `cwd` from JSON on stdin when not a TTY (same as Claude/Codex hooks). From a normal shell in the repo, run it with no stdin so it uses the current directory. It fetches `origin` and fast-forwards `main` or `master` only when that branch is checked out; other branches are unchanged aside from the fetch.
