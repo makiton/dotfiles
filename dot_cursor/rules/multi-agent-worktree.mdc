@@ -1,0 +1,26 @@
+---
+description: Isolate parallel agent sessions with dedicated git worktrees
+alwaysApply: true
+---
+
+# Multi-agent workspaces (git worktrees)
+
+You often run **multiple agents at the same time**. They must not edit the **same checkout** concurrently.
+
+## Requirement
+
+For **substantive** work in a **git repository** (multi-file changes, features, refactors—not a single trivial edit the user explicitly limits to one file), **use a dedicated git worktree** for this session’s edits unless the workspace is **already** that worktree.
+
+## Procedure
+
+1. **Already in a worktree?** If the workspace path is a linked worktree (`git worktree list` includes it) or lives under a project convention such as `.worktrees/<name>/` or `worktrees/<name>/`, work there and use a **unique branch** per task (e.g. `agent/<short-topic>`). Do not switch the main checkout for heavy work.
+2. **Otherwise:** From the **main** repo root, follow your git-sync rule once if applicable, then `git worktree add` a new path and branch. Prefer a parent directory that is **gitignored** (e.g. `.worktrees/`); if it is not ignored, add it to `.gitignore` and commit that fix before creating trees (see skill **using-git-worktrees** for directory choice and safety checks).
+3. **Open / use** the new tree as the working directory for edits in this session. If the editor workspace root cannot be changed from here, tell the user to **File → Open Folder** on the worktree path (or run shell/file tools with `cwd` set to that path) so edits do not hit the shared checkout.
+
+## Why worktrees
+
+Parallel agents on one working tree cause clobbered files, tangled `git status`, and bad merges. Worktrees give each agent its own files and branch while sharing one `.git` database.
+
+## Exceptions
+
+Skip a new worktree only when the user clearly asks for a **minimal** change in the **current** path, or when the repo is not git (no alternative here).
