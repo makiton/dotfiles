@@ -38,4 +38,10 @@ source ~/.vim/keymaps.vim
 set fileencodings=utf-8,cp932,sjis,iso-2022-jp,euc-jp
 set clipboard+=unnamed
 
-
+" WSL clipboard integration
+if filereadable('/proc/version') && readfile('/proc/version')[0] =~? 'wsl'
+  augroup WslClipboard
+    autocmd!
+    autocmd TextYankPost * if v:event.regname == '' || v:event.regname == '*' || v:event.regname == '+' | call system('clip.exe', join(v:event.regcontents, "\n") . (v:event.regtype ==# 'V' ? "\n" : "")) | endif
+  augroup END
+endif
