@@ -66,7 +66,11 @@ For commands that go beyond simple navigation, connect over WebSocket. Use the P
 
 ### Reusable Python helper
 
-Save this as `/tmp/cdp_helper.py` and run it for each task:
+This skill requires a Python helper script to communicate over WebSockets. Because agents cannot reliably maintain raw WebSocket connections or handle asynchronous JSON-RPC responses from simple bash commands, this script acts as a reliable bridge between your CLI environment and Chromium.
+
+This script is already included with this skill. You should run it directly from its deployed location at `~/.claude/skills/cdp-browser/scripts/cdp_helper.py`.
+
+If you are running in an environment where it does not exist (e.g. inside a sandbox container without dotfiles access), you may fall back to writing the following script to `/tmp/cdp_helper.py` and running it from there:
 
 ```python
 #!/usr/bin/env python3
@@ -104,14 +108,18 @@ if __name__ == "__main__":
 ### Navigate to a URL
 ```bash
 TAB_ID="<id from /json>"
-python3 /tmp/cdp_helper.py "$TAB_ID" Page.navigate '{"url":"http://localhost:3000"}'
+HELPER_SCRIPT=~/.claude/skills/cdp-browser/scripts/cdp_helper.py
+# If it doesn't exist, fallback to /tmp/cdp_helper.py
+[ ! -f "$HELPER_SCRIPT" ] && HELPER_SCRIPT=/tmp/cdp_helper.py
+
+python3 "$HELPER_SCRIPT" "$TAB_ID" Page.navigate '{"url":"http://localhost:3000"}'
 # Wait for load
-python3 /tmp/cdp_helper.py "$TAB_ID" Page.loadEventFired '{}'
+python3 "$HELPER_SCRIPT" "$TAB_ID" Page.loadEventFired '{}'
 ```
 
 ### Take a screenshot
 ```bash
-python3 /tmp/cdp_helper.py "$TAB_ID" Page.captureScreenshot '{"format":"png","quality":90}' \
+python3 "$HELPER_SCRIPT" "$TAB_ID" Page.captureScreenshot '{"format":"png","quality":90}' \
   | python3 -c "
 import sys, json, base64
 data = json.load(sys.stdin)
@@ -124,25 +132,25 @@ Then read the screenshot file with the Read tool to see what the page looks like
 
 ### Run JavaScript in the page
 ```bash
-python3 /tmp/cdp_helper.py "$TAB_ID" Runtime.evaluate \
+python3 "$HELPER_SCRIPT" "$TAB_ID" Runtime.evaluate \
   '{"expression":"document.title","returnByValue":true}'
 
 # More complex: get all error messages from the console
-python3 /tmp/cdp_helper.py "$TAB_ID" Runtime.evaluate \
+python3 "$HELPER_SCRIPT" "$TAB_ID" Runtime.evaluate \
   '{"expression":"window.__errors || []","returnByValue":true}'
 ```
 
 ### Inspect the DOM
 ```bash
 # Get the full document node
-python3 /tmp/cdp_helper.py "$TAB_ID" DOM.getDocument '{}'
+python3 "$HELPER_SCRIPT" "$TAB_ID" DOM.getDocument '{}'
 
 # Query a selector (returns nodeId)
-python3 /tmp/cdp_helper.py "$TAB_ID" DOM.querySelector \
+python3 "$HELPER_SCRIPT" "$TAB_ID" DOM.querySelector \
   '{"nodeId":1,"selector":"#app"}'
 
 # Get outer HTML of a node
-python3 /tmp/cdp_helper.py "$TAB_ID" DOM.getOuterHTML '{"nodeId":<nodeId>}'
+python3 "$HELPER_SCRIPT" "$TAB_ID" DOM.getOuterHTML '{"nodeId":<nodeId>}'
 ```
 
 ### Monitor network requests (inline Python script)
@@ -178,13 +186,13 @@ Replace `REPLACE_ME` with the actual tab ID, then run: `python3 /tmp/monitor_net
 ### Click an element or type text
 ```bash
 # Click at coordinates
-python3 /tmp/cdp_helper.py "$TAB_ID" Input.dispatchMouseEvent \
+python3 "$HELPER_SCRIPT" "$TAB_ID" Input.dispatchMouseEvent \
   '{"type":"mousePressed","x":200,"y":150,"button":"left","clickCount":1}'
-python3 /tmp/cdp_helper.py "$TAB_ID" Input.dispatchMouseEvent \
+python3 "$HELPER_SCRIPT" "$TAB_ID" Input.dispatchMouseEvent \
   '{"type":"mouseReleased","x":200,"y":150,"button":"left","clickCount":1}'
 
 # Type text (focus the input first via Runtime.evaluate + element.focus())
-python3 /tmp/cdp_helper.py "$TAB_ID" Input.dispatchKeyEvent \
+python3 "$HELPER_SCRIPT" "$TAB_ID" Input.dispatchKeyEvent \
   '{"type":"char","text":"hello"}'
 ```
 
