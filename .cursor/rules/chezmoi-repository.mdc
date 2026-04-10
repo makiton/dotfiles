@@ -1,0 +1,22 @@
+---
+description: Chezmoi source repository — use chezmoi to change dotfiles, not ad-hoc $HOME edits
+alwaysApply: true
+---
+
+# This repository (chezmoi source only)
+
+The workspace is the **chezmoi source directory** (often `~/.local/share/chezmoi`): `dot_*` paths and templates that map to `$HOME`. Rules here apply **only when this folder is the project root**; they are not deployed via chezmoi to other machines.
+
+## Use chezmoi
+
+- Prefer **`chezmoi add`**, **`chezmoi apply`** (or **`--dry-run`** first), **`chezmoi diff`**, **`chezmoi edit`**, and **`chezmoi doctor`** over editing destination files in `$HOME` directly or bypassing the source tree.
+- After changing the source, run **`chezmoi apply`** so home matches the repo unless the user says otherwise.
+- **`dot_name`** in this repo → **`.name`** under `$HOME`; **`dot_config/app`** → **`.config/app`**.
+
+## Git
+
+- Commit changes in this repository as usual; chezmoi does not replace git.
+
+## Safety
+
+- Avoid destructive chezmoi actions (`forget`, forced overwrites) unless the user clearly wants them. Prefer diffs and dry runs first.
