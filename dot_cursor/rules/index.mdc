@@ -10,6 +10,5 @@ This ruleset is intended to be used as **remote rules** (e.g. added via Cursor S
 - Prefer clear, actionable instructions over long prose.
 - One concern per rule file; use `globs` for file-specific rules.
 - Keep each rule under ~50 lines when possible.
-- When editing **chezmoi source** (`dot_*` trees, `.chezmoiignore`), follow **`chezmoi-dotfiles.mdc`** and use the chezmoi CLI to apply changes to `$HOME`.
 
 Add or edit `.mdc` files in `.cursor/rules/` to extend this set.
