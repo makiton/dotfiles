@@ -221,3 +221,4 @@ fabric.properties
 pyvenv.cfg
 
 tmp
+.worktrees
