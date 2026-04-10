@@ -8,6 +8,14 @@ These are user-level defaults intended to apply to all projects.
 - Ask a question when requirements are ambiguous or when an action is risky/destructive.
 - When modifying code, keep diffs minimal and consistent with existing conventions.
 
+## Chezmoi dotfiles repository
+
+When the git repository you are editing is the **chezmoi source directory** (paths like `~/.local/share/chezmoi`, with many `dot_*` files mapping to `$HOME`):
+
+- Use the **chezmoi** CLI to add, apply, diff, and edit dotfiles (`chezmoi add`, `chezmoi apply`, `chezmoi diff`, `chezmoi edit`, `chezmoi doctor`). Do not bypass the source tree by writing only to `$HOME` unless the user explicitly wants a one-off outside chezmoi.
+- After source changes, prefer **`chezmoi apply`** (or `--dry-run` first) so the home directory stays in sync with the repo.
+- Remember **`dot_*`** names in the repo correspond to **`.`** files in the home directory.
+
 ## Engineering defaults
 
 - Prefer deterministic behavior over "best effort" heuristics.

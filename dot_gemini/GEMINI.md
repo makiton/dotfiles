@@ -30,6 +30,14 @@ Parallel agents on one working tree cause clobbered files, tangled `git status`,
 
 Skip a new worktree only when the user clearly asks for a **minimal** change in the **current** path, or when the project is not a git repo.
 
+## Chezmoi dotfiles repository
+
+When the git repository you are editing is the **chezmoi source directory** (paths like `~/.local/share/chezmoi`, with many `dot_*` files mapping to `$HOME`):
+
+- Use the **chezmoi** CLI to add, apply, diff, and edit dotfiles (`chezmoi add`, `chezmoi apply`, `chezmoi diff`, `chezmoi edit`, `chezmoi doctor`). Do not bypass the source tree by writing only to `$HOME` unless the user explicitly wants a one-off outside chezmoi.
+- After source changes, prefer **`chezmoi apply`** (or `--dry-run` first) so the home directory stays in sync with the repo.
+- Remember **`dot_*`** names in the repo correspond to **`.`** files in the home directory.
+
 ## Continuous English Review
 The user is actively learning English. For **every** prompt or instruction the user provides, you must automatically review their English.
 After fulfilling the user's primary request, always append an `📝 English Review` section at the end of your response that applies the `english-review` skill.

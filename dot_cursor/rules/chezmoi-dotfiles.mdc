@@ -1,0 +1,29 @@
+---
+description: This workspace is chezmoi dotfiles source — use the chezmoi CLI
+globs: "{dot_*,dot_*/**/*,.chezmoiignore}"
+alwaysApply: false
+---
+
+# Chezmoi dotfiles source
+
+This repository is the **chezmoi source directory** (often `~/.local/share/chezmoi`): versioned templates and `dot_*` entries that map to files under `$HOME`. Cursor and Claude are commonly used to edit it.
+
+## Do this
+
+- Treat **chezmoi** as the primary interface for adding, syncing, and validating dotfiles—not ad‑hoc copies into `$HOME` that bypass the source tree.
+- After changing the source, prefer **`chezmoi apply`** (or `chezmoi apply --dry-run` first) so the destination matches the repo. Use **`chezmoi diff`** to inspect drift.
+- To capture an existing file into the source tree, use **`chezmoi add`** / **`chezmoi re-add`** as appropriate instead of inventing new paths by hand.
+- Use **`chezmoi edit`** when you want chezmoi to open the right source file for a destination path.
+- Run **`chezmoi doctor`** when diagnosing install or config issues.
+
+## Naming (source tree)
+
+- **`dot_name`** in the source → **`.name`** in the home directory; **`dot_config/app`** → **`.config/app`**.
+
+## Git
+
+- **Commit in this repository** for version control; chezmoi does not replace git. Use normal branch/worktree discipline for substantive multi-file work.
+
+## Safety
+
+- Avoid destructive chezmoi commands (`forget`, forced overwrites) unless the user clearly wants that. Prefer dry runs and diffs first.
