@@ -2,3 +2,4 @@ Brewfile
 
 # Repo-only files (never install under $HOME)
 GEMINI.md
+biome.jsonc
