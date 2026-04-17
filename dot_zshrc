@@ -84,14 +84,6 @@ path=(
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-# anyenv
-if [ -d "$HOME/.anyenv" ]; then
-  export PATH="$HOME/.anyenv/bin:$PATH"
-  eval "$(anyenv init -)"
-elif command -v anyenv >/dev/null 2>&1; then
-  eval "$(anyenv init -)"
-fi
-
 # asdf
 [ -f "/opt/homebrew/opt/asdf/libexec/asdf.sh" ] && source /opt/homebrew/opt/asdf/libexec/asdf.sh
 
