@@ -5,11 +5,15 @@ fi
 export __MISE_ZSH_PRECMD_RUN=0
 export __MISE_ZSH_CHPWD_RAN=0
 
+if ! command -v mise >/dev/null 2>&1; then
+  return 0
+fi
+
 mise() {
   local command
   command="${1:-}"
   if [ "$#" = 0 ]; then
-    command /opt/homebrew/bin/mise
+    command mise
     return
   fi
   shift
@@ -18,28 +22,28 @@ mise() {
   deactivate|shell|sh)
     # if argv doesn't contains -h,--help
     if [[ ! " $@ " =~ " --help " ]] && [[ ! " $@ " =~ " -h " ]]; then
-      eval "$(command /opt/homebrew/bin/mise "$command" "$@")"
+      eval "$(command mise "$command" "$@")"
       return $?
     fi
     ;;
   esac
-  command /opt/homebrew/bin/mise "$command" "$@"
+  command mise "$command" "$@"
 }
 
 autoload -Uz add-zsh-hook
 _mise_hook() {
-  eval "$(/opt/homebrew/bin/mise hook-env -s zsh)";
+  eval "$(command mise hook-env -s zsh)";
 }
 _mise_hook_precmd() {
   if [[ "${__MISE_ZSH_CHPWD_RAN:-0}" == "1" ]]; then
     export __MISE_ZSH_CHPWD_RAN=0
     return
   fi
-  eval "$(/opt/homebrew/bin/mise hook-env -s zsh --reason precmd)";
+  eval "$(command mise hook-env -s zsh --reason precmd)";
 }
 _mise_hook_chpwd() {
   export __MISE_ZSH_CHPWD_RAN=1
-  eval "$(/opt/homebrew/bin/mise hook-env -s zsh --reason chpwd)";
+  eval "$(command mise hook-env -s zsh --reason chpwd)";
 }
 add-zsh-hook precmd _mise_hook_precmd
 add-zsh-hook chpwd _mise_hook_chpwd
@@ -50,7 +54,7 @@ if [ -z "${_mise_cmd_not_found:-}" ]; then
     [ -n "$(declare -f command_not_found_handler)" ] && eval "${$(declare -f command_not_found_handler)/command_not_found_handler/_command_not_found_handler}"
 
     function command_not_found_handler() {
-        if [[ "$1" != "mise" && "$1" != "mise-"* ]] && /opt/homebrew/bin/mise hook-not-found -s zsh -- "$1"; then
+        if [[ "$1" != "mise" && "$1" != "mise-"* ]] && command mise hook-not-found -s zsh -- "$1"; then
           _mise_hook
           "$@"
         elif [ -n "$(declare -f _command_not_found_handler)" ]; then
