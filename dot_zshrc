@@ -87,12 +87,6 @@ export NVM_DIR="$HOME/.nvm"
 # asdf
 [ -f "/opt/homebrew/opt/asdf/libexec/asdf.sh" ] && source /opt/homebrew/opt/asdf/libexec/asdf.sh
 
-# rbenv
-if command -v rbenv >/dev/null 2>&1; then
-  export PATH=./bin:./vendor/bin:./node_modules/.bin:$PATH
-  eval "$(rbenv init -)"
-fi
-
 # pyenv
 if command -v pyenv >/dev/null 2>&1; then
   export PYENV_ROOT="$HOME/.pyenv"
