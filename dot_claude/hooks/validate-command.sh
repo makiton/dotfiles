@@ -4,8 +4,8 @@ COMMAND=$(jq -r '.tool_input.command // .command // empty' < /dev/stdin)
 
 DANGEROUS_PATTERNS=(
   "rm -rf"
-  "curl.*|.*bash"
-  "wget.*|.*bash"
+  "curl.*\|.*bash"
+  "wget.*\|.*bash"
   "chmod 777"
   "mkfs"
   "dd if="
@@ -62,3 +62,4 @@ EOF
 fi
 
 exit 0
+
