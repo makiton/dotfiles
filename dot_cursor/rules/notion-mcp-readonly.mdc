@@ -1,0 +1,37 @@
+---
+description: Use Notion MCP only for read-only tools; never call mutating tools
+alwaysApply: true
+---
+
+# Notion MCP — read-only
+
+When using the **Notion** MCP server, you may **only** invoke tools that read or query data. **Do not** call any tool that creates, updates, deletes, moves, duplicates, or comments on content.
+
+## Allowed (read / query)
+
+Per [Notion MCP supported tools](https://developers.notion.com/docs/mcp-supported-tools), these are read-only:
+
+- `notion-search`
+- `notion-fetch`
+- `notion-query-data-sources`
+- `notion-query-database-view`
+- `notion-get-comments`
+- `notion-get-teams`
+- `notion-get-users`
+- `notion-get-user`
+- `notion-get-self`
+
+## Forbidden (mutations)
+
+Do **not** use:
+
+- `notion-create-pages`, `notion-update-page`, `notion-move-pages`, `notion-duplicate-page`
+- `notion-create-database`, `notion-update-data-source`
+- `notion-create-view`, `notion-update-view`
+- `notion-create-comment`
+
+If the user asks for work that requires a forbidden tool, explain the policy and suggest they do the change in the Notion app, or ask them to temporarily relax this rule.
+
+## Cursor settings
+
+Cursor cannot fully block individual MCP tools via repo config alone; this rule is the behavioral guardrail. For **auto-run**, you can optionally set `~/.cursor/permissions.json` `mcpAllowlist` to only the allowed `notion:notion-*` pairs (verify the exact server key in **Cursor Settings → MCP** matches `notion`). Tool names may omit the `notion-` prefix in some clients—match what **Available Tools** shows.
