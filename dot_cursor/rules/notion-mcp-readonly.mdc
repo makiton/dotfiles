@@ -32,6 +32,10 @@ Do **not** use:
 
 If the user asks for work that requires a forbidden tool, explain the policy and suggest they do the change in the Notion app, or ask them to temporarily relax this rule.
 
+## Claude Code
+
+Hard blocks for mutating tools live in **`~/.claude/settings.json`** → `permissions.deny`, using Claude Code’s pattern `mcp__<serverId>__<toolName>` (see [permissions — MCP](https://code.claude.com/docs/en/permissions#mcp)). This repo assumes the Notion MCP server id is **`notion`**; if yours differs (check `/mcp` or MCP config), rename the middle segment in those rules (for example `mcp__my-notion__…`).
+
 ## Cursor settings
 
 Cursor cannot fully block individual MCP tools via repo config alone; this rule is the behavioral guardrail. For **auto-run**, you can optionally set `~/.cursor/permissions.json` `mcpAllowlist` to only the allowed `notion:notion-*` pairs (verify the exact server key in **Cursor Settings → MCP** matches `notion`). Tool names may omit the `notion-` prefix in some clients—match what **Available Tools** shows.

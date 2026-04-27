@@ -23,7 +23,16 @@
       "Bash(gh repo unarchive *)",
       "Bash(gh secret *)",
       "Bash(gh ssh-key *)",
-      "Bash(gh variable *)"
+      "Bash(gh variable *)",
+      "mcp__notion__notion-create-pages",
+      "mcp__notion__notion-update-page",
+      "mcp__notion__notion-move-pages",
+      "mcp__notion__notion-duplicate-page",
+      "mcp__notion__notion-create-database",
+      "mcp__notion__notion-update-data-source",
+      "mcp__notion__notion-create-view",
+      "mcp__notion__notion-update-view",
+      "mcp__notion__notion-create-comment"
     ],
     "allow": [
       "Bash(gh issue *)",

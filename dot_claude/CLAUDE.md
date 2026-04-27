@@ -41,6 +41,10 @@ Skip a new worktree only when the user clearly asks for a **minimal** change in 
 - Summarize what you changed and how to verify it.
 - If you could not run tests/build, say so explicitly.
 
+## Notion MCP (Claude Code)
+
+Hard permission rules deny mutating Notion MCP tools in `.claude/settings.json` (`permissions.deny` entries such as `mcp__notion__notion-update-page`). Patterns use the MCP server id configured for Notion (`notion` in this repo). If your MCP server uses another name, duplicate those rules with that id.
+
 ## Continuous English Review
 
 Use the **english-review** skill after every response. See skill definition for full instructions.
