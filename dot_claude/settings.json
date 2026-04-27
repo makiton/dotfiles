@@ -4,6 +4,24 @@
     "ENABLE_LSP_TOOL": "1"
   },
   "permissions": {
+    "allow": [
+      "Bash(gh issue *)",
+      "Bash(gh pr *)",
+      "Bash(gh repo clone *)",
+      "Bash(gh repo view *)",
+      "Bash(gh run *)",
+      "Bash(gh search *)",
+      "Bash(gh status *)",
+      "Bash(git add *)",
+      "Bash(git checkout *)",
+      "Bash(git commit *)",
+      "Bash(git fetch *)",
+      "Bash(git merge *)",
+      "Bash(git pull *)",
+      "Bash(git push *)",
+      "Bash(git stash *)",
+      "Bash(grep -v \"^\\\\s*$\")"
+    ],
     "deny": [
       "Bash(gh auth *)",
       "Bash(gh codespace create *)",
@@ -34,25 +52,9 @@
       "mcp__notion__notion-update-view",
       "mcp__notion__notion-create-comment"
     ],
-    "allow": [
-      "Bash(gh issue *)",
-      "Bash(gh pr *)",
-      "Bash(gh repo clone *)",
-      "Bash(gh repo view *)",
-      "Bash(gh run *)",
-      "Bash(gh search *)",
-      "Bash(gh status *)",
-      "Bash(git add *)",
-      "Bash(git checkout *)",
-      "Bash(git commit *)",
-      "Bash(git fetch *)",
-      "Bash(git merge *)",
-      "Bash(git pull *)",
-      "Bash(git push *)",
-      "Bash(git stash *)",
-      "Bash(grep -v \"^\\\\s*$\")"
+    "ask": [
+      "Bash(gh api *)"
     ],
-    "ask": ["Bash(gh api *)"],
     "disableBypassPermissionsMode": "disable"
   },
   "model": "opusplan",
@@ -105,27 +107,12 @@
   "enabledPlugins": {
     "typescript-lsp@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": true,
-    "slack@claude-plugins-official": true
+    "slack@claude-plugins-official": true,
+    "notion@claude-plugins-official": true,
+    "ruby-lsp@claude-plugins-official": true
   },
   "sandbox": {
     "enabled": true,
-    "enableWeakerNetworkIsolation": true,
-    "filesystem": {
-      "allowWrite": [
-        "~/pkg/mod/cache",
-        "~/Library/Caches/go-build",
-        "~/.config/acli",
-        "~/.cache/gh"
-      ],
-      "denyRead": [
-        "~/.aws/credentials",
-        "~/.ssh/id_*",
-        "~/.ssh/*.pem",
-        "~/.ssh/*.key",
-        "./.env",
-        "./.env.*"
-      ]
-    },
     "network": {
       "allowedDomains": [
         "localhost",
@@ -142,7 +129,24 @@
       ],
       "allowAllUnixSockets": true,
       "allowLocalBinding": true
-    }
+    },
+    "filesystem": {
+      "allowWrite": [
+        "~/pkg/mod/cache",
+        "~/Library/Caches/go-build",
+        "~/.config/acli",
+        "~/.cache/gh"
+      ],
+      "denyRead": [
+        "~/.aws/credentials",
+        "~/.ssh/id_*",
+        "~/.ssh/*.pem",
+        "~/.ssh/*.key",
+        "./.env",
+        "./.env.*"
+      ]
+    },
+    "enableWeakerNetworkIsolation": true
   },
   "defaultMode": "auto"
 }
