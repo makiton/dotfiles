@@ -145,3 +145,5 @@ if command -v tmux >/dev/null 2>&1 && [ -z "$TMUX" ]; then
 fi
 
 source "$HOME/.zsh/mise"
+
+[ -f ~/.config/mfpp/fn.sh ] && source ~/.config/mfpp/fn.sh
