@@ -1,0 +1,9 @@
+# High-contrast Reline completion dialog (IRB autocomplete menu).
+# Default theme can look like dark-on-dark with some terminal palettes.
+if defined?(Reline::Face)
+  Reline::Face.config(:completion_dialog) do |conf|
+    conf.define :default, foreground: :bright_white, background: :bright_blue
+    conf.define :enhanced, foreground: :black, background: :bright_yellow
+    conf.define :scrollbar, foreground: :bright_white, background: :bright_blue
+  end
+end
