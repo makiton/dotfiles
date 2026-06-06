@@ -134,7 +134,14 @@ fi
 
 # Auto-start tmux
 if command -v tmux >/dev/null 2>&1 && [ -z "$TMUX" ]; then
-    tmux attach-session -t default || tmux new-session -s default
+    session_name="${PWD##*/}"
+    if [ -z "$session_name" ]; then
+        session_name="root"
+    fi
+    # Remove characters that tmux doesn't allow in session names (like colons)
+    session_name="${session_name//:/_}"
+    tmux attach-session -t "$session_name" || tmux new-session -s "$session_name"
+    unset session_name
 fi
 
 source "$HOME/.zsh/mise"
