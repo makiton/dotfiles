@@ -148,4 +148,4 @@ source "$HOME/.zsh/mise"
 
 [ -f ~/.config/mfpp/fn.sh ] && source ~/.config/mfpp/fn.sh
 
-source "$HOME/.local/.env"
+[ -f ~/.local/.env ] && source "$HOME/.local/.env"
