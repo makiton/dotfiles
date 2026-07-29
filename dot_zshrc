@@ -149,3 +149,4 @@ source "$HOME/.zsh/mise"
 [ -f ~/.config/mfpp/fn.sh ] && source ~/.config/mfpp/fn.sh
 
 [ -f ~/.local/.env ] && source "$HOME/.local/.env"
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
